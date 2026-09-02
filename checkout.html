@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Checkout - Velaste Store</title>
+    <link rel="stylesheet" href="checkout.css">
+</head>
+
+<body>
+    <div class="checkout-wrapper">
+        <nav class="checkout-nav">
+            <a href="shirt ttable.html" class="back-link">
+                ← Back to Product Size Chart
+            </a>
+        </nav>
+
+        <main class="checkout-card">
+            <header class="checkout-header">
+                <h1>Complete Your Order</h1>
+                <p>Fast, secure, and encrypted 256-bit checkout</p>
+            </header>
+
+            <div class="checkout-grid">
+                <!-- Shipping & Payment Form -->
+                <section class="form-section" aria-labelledby="shipping-heading">
+                    <h2 id="shipping-heading" class="section-title">📦 Shipping Address</h2>
+                    <form id="checkout-form" onsubmit="event.preventDefault(); alert('🎉 Order placed successfully! Thank you for shopping with Velaste.'); window.location.href='shirt ttable.html';">
+                        <div class="form-group">
+                            <label for="fullname">Full Name</label>
+                            <input type="text" id="fullname" placeholder="Vishal Gangwar" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" placeholder="gangwarvishal790@gmail.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="address">Street Address</label>
+                            <input type="text" id="address" placeholder="Near Pal Petrol Pump, Bisalpur" required>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="city">City</label>
+                                <input type="text" id="city" placeholder="Bisalpur" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="zipcode">Postal Code</label>
+                                <input type="text" id="zipcode" placeholder="262201" required>
+                            </div>
+                        </div>
+
+                        <h2 class="section-title" style="margin-top: 1.5rem;">💳 Payment Method</h2>
+                        <div class="payment-methods">
+                            <div class="payment-method-card active" onclick="selectPayment(this)">
+                                <input type="radio" id="card" name="payment" checked>
+                                <label for="card">💳 Card</label>
+                            </div>
+                            <div class="payment-method-card" onclick="selectPayment(this)">
+                                <input type="radio" id="upi" name="payment">
+                                <label for="upi">📱 UPI / QR</label>
+                            </div>
+                            <div class="payment-method-card" onclick="selectPayment(this)">
+                                <input type="radio" id="cod" name="payment">
+                                <label for="cod">💵 COD</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cardnumber">Card Number / UPI ID</label>
+                            <input type="text" id="cardnumber" placeholder="4532 •••• •••• 8921" required>
+                        </div>
+
+                        <button type="submit" class="btn-place-order">
+                            🔒 Complete Purchase (₹5,498)
+                        </button>
+
+                        <p class="security-badge">
+                            🔒 Encrypted with 256-bit SSL Security
+                        </p>
+                    </form>
+                </section>
+
+                <!-- Order Summary -->
+                <aside class="summary-section" aria-labelledby="summary-heading">
+                    <div>
+                        <h2 id="summary-heading" class="section-title">🛍️ Order Summary</h2>
+                        <div class="order-items">
+                            <div class="item-card">
+                                <div>
+                                    <p class="item-name">Velaste T-shirt</p>
+                                    <p class="item-meta">Size: M | Color: Crimson Red</p>
+                                </div>
+                                <p class="item-price">₹2,000</p>
+                            </div>
+                            <div class="item-card">
+                                <div>
+                                    <p class="item-name">Velaste Jeans</p>
+                                    <p class="item-meta">Size: 32 | Color: Classic Blue</p>
+                                </div>
+                                <p class="item-price">₹1,999</p>
+                            </div>
+                            <div class="item-card">
+                                <div>
+                                    <p class="item-name">Velaste Hoodie</p>
+                                    <p class="item-meta">Size: M | Color: Charcoal</p>
+                                </div>
+                                <p class="item-price">₹1,999</p>
+                            </div>
+                        </div>
+
+                        <div class="summary-calculations">
+                            <div class="calc-row">
+                                <span>Subtotal</span>
+                                <span>₹5,998</span>
+                            </div>
+                            <div class="calc-row">
+                                <span>Discount (Velaste Special)</span>
+                                <span style="color: #10b981;">- ₹500</span>
+                            </div>
+                            <div class="calc-row">
+                                <span>Shipping Fee</span>
+                                <span style="color: #10b981;">FREE</span>
+                            </div>
+                            <div class="calc-row total-row">
+                                <span>Total Payable</span>
+                                <span>₹5,498</span>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function selectPayment(element) {
+            document.querySelectorAll('.payment-method-card').forEach(card => card.classList.remove('active'));
+            element.classList.add('active');
+            element.querySelector('input[type="radio"]').checked = true;
+        }
+    </script>
+</body>
+
+</html>

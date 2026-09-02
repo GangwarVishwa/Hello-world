@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessible T-shirt Size Chart & Product Manager</title>
+    <link rel="stylesheet" href="shirt-table.css">
+</head>
+
+<body>
+    <main class="chart-container">
+        <header class="chart-header">
+            <h1 class="table-title">Product Size Chart & Inventory Manager</h1>
+            <p class="table-subtitle">Select product sizes or update live inventory availability below.</p>
+        </header>
+
+        <table aria-label="Product size and availability chart">
+            <caption>Interactive Size Chart & Stock Manager</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Product</th>
+                    <th scope="col">Size Options</th>
+                    <th scope="col">Length (in)</th>
+                    <th scope="col">Availability Status</th>
+                    <th scope="col">Price (₹)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- T-shirt Row -->
+                <tr id="row-tshirt">
+                    <th scope="row" class="product-cell">T-shirt</th>
+                    <td>
+                        <label for="size-tshirt" class="sr-only">Size for T-shirt</label>
+                        <select id="size-tshirt" class="table-select size-select" onchange="updateProduct('tshirt')">
+                            <option value="S" data-length="26" data-price="1500" selected>S (Small)</option>
+                            <option value="M" data-length="28" data-price="2000">M (Medium)</option>
+                            <option value="L" data-length="30" data-price="3000">L (Large)</option>
+                            <option value="XL" data-length="32" data-price="3500">XL (Extra Large)</option>
+                        </select>
+                    </td>
+                    <td><span id="length-tshirt">26</span></td>
+                    <td>
+                        <div class="control-group">
+                            <label for="status-select-tshirt" class="sr-only">Availability status for T-shirt</label>
+                            <select id="status-select-tshirt" class="table-select availability-select"
+                                onchange="updateStatus('tshirt')">
+                                <option value="instock" selected>In Stock</option>
+                                <option value="limited">Limited Stock</option>
+                                <option value="preorder">Pre-Order</option>
+                                <option value="outofstock">Out of Stock</option>
+                            </select>
+                            <span id="badge-tshirt" class="status-badge status-instock" role="status"
+                                aria-live="polite">In Stock</span>
+                        </div>
+                    </td>
+                    <td class="price-cell">₹<span id="price-tshirt">1500</span></td>
+                </tr>
+
+                <!-- Jeans Row -->
+                <tr id="row-jeans">
+                    <th scope="row" class="product-cell">Jeans</th>
+                    <td>
+                        <label for="size-jeans" class="sr-only">Size for Jeans</label>
+                        <select id="size-jeans" class="table-select size-select" onchange="updateProduct('jeans')">
+                            <option value="28" data-length="28" data-price="1599">28</option>
+                            <option value="30" data-length="30" data-price="1799">30</option>
+                            <option value="32" data-length="32" data-price="1999" selected>32 (Medium)</option>
+                            <option value="34" data-length="34" data-price="2199">34</option>
+                        </select>
+                    </td>
+                    <td><span id="length-jeans">32</span></td>
+                    <td>
+                        <div class="control-group">
+                            <label for="status-select-jeans" class="sr-only">Availability status for Jeans</label>
+                            <select id="status-select-jeans" class="table-select availability-select"
+                                onchange="updateStatus('jeans')">
+                                <option value="instock" selected>In Stock</option>
+                                <option value="limited">Limited Stock</option>
+                                <option value="preorder">Pre-Order</option>
+                                <option value="outofstock">Out of Stock</option>
+                            </select>
+                            <span id="badge-jeans" class="status-badge status-instock" role="status"
+                                aria-live="polite">In Stock</span>
+                        </div>
+                    </td>
+                    <td class="price-cell">₹<span id="price-jeans">1999</span></td>
+                </tr>
+
+                <!-- Velaste Hoodie Row -->
+                <tr id="row-hoodie">
+                    <th scope="row" class="product-cell">Velaste Hoodie</th>
+                    <td>
+                        <label for="size-hoodie" class="sr-only">Size for Velaste Hoodie</label>
+                        <select id="size-hoodie" class="table-select size-select" onchange="updateProduct('hoodie')">
+                            <option value="M" data-length="28" data-price="1999" selected>M (Medium)</option>
+                            <option value="L" data-length="30" data-price="2299">L (Large)</option>
+                            <option value="XL" data-length="32" data-price="2599">XL (Extra Large)</option>
+                        </select>
+                    </td>
+                    <td><span id="length-hoodie">28</span></td>
+                    <td>
+                        <div class="control-group">
+                            <label for="status-select-hoodie" class="sr-only">Availability status for Velaste
+                                Hoodie</label>
+                            <select id="status-select-hoodie" class="table-select availability-select"
+                                onchange="updateStatus('hoodie')">
+                                <option value="instock" selected>Available</option>
+                                <option value="limited">Limited Stock</option>
+                                <option value="preorder">Pre-Order</option>
+                                <option value="outofstock">Out of Stock</option>
+                            </select>
+                            <span id="badge-hoodie" class="status-badge status-instock" role="status"
+                                aria-live="polite">Available</span>
+                        </div>
+                    </td>
+                    <td class="price-cell">₹<span id="price-hoodie">1999</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Accessible Live Announcement Region -->
+        <div id="live-announcer" class="live-summary" aria-live="polite" role="region">
+            ℹ️ <strong>Status Log:</strong> Select size options or change availability status above to see real-time
+            updates.
+        </div>
+
+        <div class="checkout-banner">
+            <a href="checkout.html" class="btn-checkout" target="_blank">
+                Proceed to Checkout 🛒 →
+            </a>
+        </div>
+    </main>
+
+    <script>
+        function updateProduct(productId) {
+            const selectEl = document.getElementById('size-' + productId);
+            const selectedOpt = selectEl.options[selectEl.selectedIndex];
+            const length = selectedOpt.getAttribute('data-length');
+            const price = selectedOpt.getAttribute('data-price');
+
+            document.getElementById('length-' + productId).textContent = length;
+            document.getElementById('price-' + productId).textContent = price;
+
+            const productName = document.querySelector('#row-' + productId + ' th').textContent;
+            document.getElementById('live-announcer').innerHTML =
+                `✏️ <strong>Updated:</strong> ${productName} size changed to <strong>${selectedOpt.value}</strong> (Length: ${length}", Price: ₹${price}).`;
+        }
+
+        function updateStatus(productId) {
+            const selectEl = document.getElementById('status-select-' + productId);
+            const badgeEl = document.getElementById('badge-' + productId);
+            const value = selectEl.value;
+            const text = selectEl.options[selectEl.selectedIndex].text;
+
+            badgeEl.className = 'status-badge status-' + value;
+            badgeEl.textContent = text;
+
+            const productName = document.querySelector('#row-' + productId + ' th').textContent;
+            document.getElementById('live-announcer').innerHTML =
+                `🔄 <strong>Status Changed:</strong> ${productName} availability set to <strong>${text}</strong>.`;
+        }
+    </script>
+</body>
+
+</html>
